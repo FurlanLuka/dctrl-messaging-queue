@@ -1,0 +1,247 @@
+{
+  "version": "5",
+  "dialect": "sqlite",
+  "id": "6ea16f61-25b8-414a-b124-593a3ca651b2",
+  "prevId": "00000000-0000-0000-0000-000000000000",
+  "tables": {
+    "event_log": {
+      "name": "event_log",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "owner": {
+          "name": "owner",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "sender": {
+          "name": "sender",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "recipient": {
+          "name": "recipient",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "event": {
+          "name": "event",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "stream_id": {
+          "name": "stream_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "eventLog_idIdx": {
+          "name": "eventLog_idIdx",
+          "columns": [
+            "id"
+          ],
+          "isUnique": false
+        },
+        "eventLog_ownerIdx": {
+          "name": "eventLog_ownerIdx",
+          "columns": [
+            "owner"
+          ],
+          "isUnique": false
+        },
+        "eventLog_streamIdIdx": {
+          "name": "eventLog_streamIdIdx",
+          "columns": [
+            "stream_id"
+          ],
+          "isUnique": false
+        },
+        "eventLog_senderIdx": {
+          "name": "eventLog_senderIdx",
+          "columns": [
+            "sender"
+          ],
+          "isUnique": false
+        },
+        "eventLog_recipientIdx": {
+          "name": "eventLog_recipientIdx",
+          "columns": [
+            "recipient"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "event_queue": {
+      "name": "event_queue",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "recipient": {
+          "name": "recipient",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "sender": {
+          "name": "sender",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "event": {
+          "name": "event",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "stream_id": {
+          "name": "stream_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "eventQueue_idIdx": {
+          "name": "eventQueue_idIdx",
+          "columns": [
+            "id"
+          ],
+          "isUnique": false
+        },
+        "eventQueue_recipientIdx": {
+          "name": "eventQueue_recipientIdx",
+          "columns": [
+            "recipient"
+          ],
+          "isUnique": false
+        },
+        "eventQueue_senderIdx": {
+          "name": "eventQueue_senderIdx",
+          "columns": [
+            "sender"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "registry": {
+      "name": "registry",
+      "columns": {
+        "registry_signature": {
+          "name": "registry_signature",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "identity_signature": {
+          "name": "identity_signature",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "handshake_key": {
+          "name": "handshake_key",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "data": {
+          "name": "data",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "data_signature": {
+          "name": "data_signature",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "dctrl": {
+          "name": "dctrl",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "registry_dctrl": {
+          "name": "registry_dctrl",
+          "columns": [
+            "dctrl"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    }
+  },
+  "enums": {},
+  "_meta": {
+    "schemas": {},
+    "tables": {},
+    "columns": {}
+  }
+}
