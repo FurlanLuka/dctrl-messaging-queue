@@ -1,5 +1,4 @@
 import { Elysia, NotFoundError } from "elysia";
-import { generateKeyPair } from "./crypto";
 import {
   getIdentity,
   registerIdentity,
@@ -18,6 +17,7 @@ import { websocketConnectionRequestSchema } from "./modules/mediator/mediator.sc
 import { db } from "./database";
 import { eventLogRepository, eventQueueRepository } from "./schema";
 import { and, eq, sql } from "drizzle-orm";
+import { cors } from "@elysiajs/cors";
 
 export const mediatorKeyPair = {
   publicKey: process.env.MEDIATOR_PUBLIC_KEY as string,
@@ -25,6 +25,7 @@ export const mediatorKeyPair = {
 };
 
 export const httpServer = new Elysia()
+  .use(cors())
   .get("/.well-known/pbk.json", () => {
     return {
       pbk: mediatorKeyPair.publicKey,
@@ -75,7 +76,7 @@ export const registerWebsocketRoutes = () => {
           ws.data.query.registry_signature,
           ws.data.query.identity_signature
         );
-      } catch {
+      } catch (err) {
         ws.close();
       }
     },
